@@ -74,18 +74,18 @@ uplinks:
 # https://verdaccio.org/docs/protect-your-dependencies/
 # https://verdaccio.org/docs/configuration#packages
 packages:
-  '@dean/*':
+  "@dean/*":
     access: $all
     publish: dean
     unpublish: dean
-  '@*/*':
+  "@*/*":
     # scoped packages
     access: $all
     publish: $authenticated
     unpublish: $authenticated
     proxy: npmjs
 
-  '**':
+  "**":
     # allow all users (including non-authenticated users) to read and
     # publish all packages
     #
