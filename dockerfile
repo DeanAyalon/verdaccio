@@ -12,3 +12,4 @@ EXPOSE 4873
 
 HEALTHCHECK --interval=30s --timeout=3s \
     CMD curl -f http://localhost:4873/ || exit 1
+    # CMD curl -f http://10.100.102.178:4873/ || exit 1
