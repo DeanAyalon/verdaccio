@@ -10,5 +10,8 @@ COPY files/storage/clear.sh /verdaccio/storage/clear.sh
 # Expose the port Verdaccio runs on
 EXPOSE 4873
 
-HEALTHCHECK --interval=30s --timeout=10s \
-    CMD curl -f http://deanayalon.com:4873/ || exit 1
+# Get curl and define healthcheck script
+USER root
+RUN apk update && apk add curl
+HEALTHCHECK --interval=30s --timeout=3s \
+    CMD curl -f http://localhost:4873/ || exit 1

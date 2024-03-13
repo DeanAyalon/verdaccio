@@ -3,6 +3,7 @@
 # Flags
 help() {
     echo Use: new-container.sh [-flags] [container name]
+    echo "  Default container name: dean-verdaccio"
     echo "  Flags:"
     echo "  -p(ort)     Specify host port to map to Verdaccio.  Default: 4873"
     echo "  -v(ersion)  Specify version tag.                    Default: latest"
