@@ -38,4 +38,4 @@ echo Running new Docker Container $name using Image $IMAGE
 echo "Port: $port   Version: $version"
 echo
 echo "> docker run -dit --name=$name -p $port:4873 $IMAGE:$version"
-docker run -dit --name=$name -p $port:4873 $IMAGE:$version
+docker run -dit --name=$name -p $port:4873 -v ~/Documents/verdaccio:/verdaccio/storage/data $IMAGE:$version
