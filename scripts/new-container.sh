@@ -30,12 +30,15 @@ shift $((OPTIND-1))
 IMAGE=dean-verdaccio
 name=$1
 
-if [ -z $name ]; then
-    name=$IMAGE
-fi
+[ -z $name ] && name=$IMAGE
+
+mounts=~/Documents/verdaccio
 
 echo Running new Docker Container $name using Image $IMAGE
 echo "Port: $port   Version: $version"
 echo
 echo "> docker run -dit --name=$name -p $port:4873 $IMAGE:$version"
-docker run -dit --name=$name -p $port:4873 -v ~/Documents/verdaccio:/verdaccio/storage/data $IMAGE:$version
+docker run -dit --name=$name -p $port:4873  \
+    -v $mounts/storage:/verdaccio/storage   \
+    -v $mounts/certs:/verdaccio/certs       \
+    $IMAGE:$version 

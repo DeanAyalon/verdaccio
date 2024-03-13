@@ -158,17 +158,18 @@ server:
 listen:
 # - localhost:4873              # default value
 # - http://localhost:4873       # same thing
-- 0.0.0.0:4873                  # listen on all addresses (INADDR_ANY)
+- https://0.0.0.0:4873          # listen on all addresses (INADDR_ANY)
 # - https://example.org:4873    # if you want to use https
 # - "[::1]:4873"                # ipv6
 # - unix:/tmp/verdaccio.sock    # unix socket
 
 # The HTTPS configuration is useful if you do not consider use a HTTP Proxy
 # https://verdaccio.org/docs/configuration#https
-# https:
-#   key: ./path/verdaccio-key.pem
-#   cert: ./path/verdaccio-cert.pem
-#   ca: ./path/verdaccio-csr.pem
+https:
+  key: /verdaccio/certs/verdaccio-key.pem
+  cert: /verdaccio/certs/verdaccio-cert.pem
+  ca: /verdaccio/certs/verdaccio-csr.pem
+
 
 # https://verdaccio.org/docs/configuration#proxy
 # http_proxy: http://something.local/
