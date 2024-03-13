@@ -157,18 +157,18 @@ server:
 # https://verdaccio.org/docs/configuration#listen-port
 listen:
 # - localhost:4873              # default value
-# - http://localhost:4873       # same thing
-- 0.0.0.0:4873                  # listen on all addresses (INADDR_ANY)
+- https://localhost:4873       # same thing
+# - 0.0.0.0:4873                  # listen on all addresses (INADDR_ANY)
 # - https://example.org:4873    # if you want to use https
 # - "[::1]:4873"                # ipv6
 # - unix:/tmp/verdaccio.sock    # unix socket
 
 # The HTTPS configuration is useful if you do not consider use a HTTP Proxy
 # https://verdaccio.org/docs/configuration#https
-# https:
-#   key: ./path/verdaccio-key.pem
-#   cert: ./path/verdaccio-cert.pem
-#   ca: ./path/verdaccio-csr.pem
+https:
+  key: /verdaccio/storage/data/verdaccio-key.pem
+  cert: /verdaccio/storage/data/verdaccio-cert.pem
+  ca: /verdaccio/storage/data/verdaccio-csr.pem
 
 # https://verdaccio.org/docs/configuration#proxy
 # http_proxy: http://something.local/
@@ -181,13 +181,73 @@ listen:
 #   endpoint: https://usagge.hipchat.com/v2/room/3729485/notification?auth_token=mySecretToken
 #   content: '{"color":"green","message":"New package published: * {{ name }}*","notify":true,"message_format":"text"}'
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#…………………...„„-~^^~„-„„_
+#………………„-^*'' : : „'' : : : : *-„
+#…………..„-* : : :„„--/ : : : : : : : '\
+#…………./ : : „-* . .| : : : : : : : : '|
+#……….../ : „-* . . . | : : : : : : : : |
+#………...\„-* . . . . .| : : : : : : : :'|
+#……….../ . . . . . . '| : : : : : : : :|
+#……..../ . . . . . . . .'\ : : : : : : : |
+#……../ . . . . . . . . . .\ : : : : : : :|
+#……./ . . . . . . . . . . . '\ : : : : : /
+#….../ . . . . . . . . . . . . . *-„„„„-*'
+#….'/ . . . . . . . . . . . . . . '|
+#…/ . . . . . . . ./ . . . . . . .|
+#../ . . . . . . . .'/ . . . . . . .'|
+#./ . . . . . . . . / . . . . . . .'|
+#'/ . . . . . . . . . . . . . . . .'|
+#'| . . . . . \ . . . . . . . . . .|
+#'| . . . . . . \„_^- „ . . . . .'|
+#'| . . . . . . . . .'\ .\ ./ '/ . |
+#| .\ . . . . . . . . . \ .'' / . '|
+#| . . . . . . . . . . / .'/ . . .|
+#| . . . . . . .| . . / ./ ./ . .|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 middlewares:
   audit:
     enabled: true
 
 # https://verdaccio.org/docs/logger
 # log settings
-log: { type: stdout, format: pretty, level: http }
+log: { type: stdout, format: pretty, level: debug }
 #experiments:
 #  # support for npm token command
 #  token: false
