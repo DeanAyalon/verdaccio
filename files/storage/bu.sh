@@ -1,1 +1,1 @@
-mkdir backup -p; cp -r data/@dean -t backup
+mkdir backup -p && cp -r data/@dean -t backup

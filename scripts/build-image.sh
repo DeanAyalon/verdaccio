@@ -11,7 +11,7 @@ help() {
 }
 version="latest" # Default version
 path="."
-while getopts "hcv:" opt; do
+while getopts "hcp:v:" opt; do
     case $opt in
         h)
             help; exit 1 ;;
@@ -28,5 +28,12 @@ done
 shift $((OPTIND-1))
 flags=$no_cache
 
+echo Building new Docker Image for Verdaccio
+echo "Version: $version     Path: $path"
+echo Flags: $no_cache
+echo
+
 # docker build $no_cache -t certs . -f dockerfile.certs
+
+echo "> docker build $flags -t dean-verdaccio:$version $path"
 docker build $flags -t dean-verdaccio:$version $path
