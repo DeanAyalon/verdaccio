@@ -11,6 +11,7 @@ RUN apk update && apk add curl
 HEALTHCHECK --interval=30s --timeout=3s \
     CMD curl -f https://localhost:4873/ || exit 1
 
+
 # Copy configuration file into container
 COPY files/conf/config.yaml /verdaccio/conf/config.yaml
 # Copy helper scripts into container

@@ -182,13 +182,73 @@ https:
 #   endpoint: https://usagge.hipchat.com/v2/room/3729485/notification?auth_token=mySecretToken
 #   content: '{"color":"green","message":"New package published: * {{ name }}*","notify":true,"message_format":"text"}'
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#…………………...„„-~^^~„-„„_
+#………………„-^*'' : : „'' : : : : *-„
+#…………..„-* : : :„„--/ : : : : : : : '\
+#…………./ : : „-* . .| : : : : : : : : '|
+#……….../ : „-* . . . | : : : : : : : : |
+#………...\„-* . . . . .| : : : : : : : :'|
+#……….../ . . . . . . '| : : : : : : : :|
+#……..../ . . . . . . . .'\ : : : : : : : |
+#……../ . . . . . . . . . .\ : : : : : : :|
+#……./ . . . . . . . . . . . '\ : : : : : /
+#….../ . . . . . . . . . . . . . *-„„„„-*'
+#….'/ . . . . . . . . . . . . . . '|
+#…/ . . . . . . . ./ . . . . . . .|
+#../ . . . . . . . .'/ . . . . . . .'|
+#./ . . . . . . . . / . . . . . . .'|
+#'/ . . . . . . . . . . . . . . . .'|
+#'| . . . . . \ . . . . . . . . . .|
+#'| . . . . . . \„_^- „ . . . . .'|
+#'| . . . . . . . . .'\ .\ ./ '/ . |
+#| .\ . . . . . . . . . \ .'' / . '|
+#| . . . . . . . . . . / .'/ . . .|
+#| . . . . . . .| . . / ./ ./ . .|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 middlewares:
   audit:
     enabled: true
 
 # https://verdaccio.org/docs/logger
 # log settings
-log: { type: stdout, format: pretty, level: http }
+log: { type: stdout, format: pretty, level: debug }
 #experiments:
 #  # support for npm token command
 #  token: false
