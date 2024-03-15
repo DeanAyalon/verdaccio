@@ -9,10 +9,9 @@ ENV VERDACCIO_PROTOCOL=https
 USER root
 RUN apk update && apk add curl
 HEALTHCHECK --interval=30s --timeout=3s \
-    CMD curl -f https://localhost:4873/ || exit 1
+    CMD curl -f -k https://localhost:4873/ || exit 1
+    # -k skips SSL verification, for self-signed certificates
 
-
-# Copy configuration file into container
+# Copy files into container
 COPY files/conf/config.yaml /verdaccio/conf/config.yaml
-# Copy helper scripts into container
 COPY files/scripts/* /verdaccio/scripts/
