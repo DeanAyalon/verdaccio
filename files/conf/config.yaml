@@ -75,9 +75,14 @@ uplinks:
 # https://verdaccio.org/docs/configuration#packages
 packages:
   "@dean/*":
+    access: dean # evab
+    publish: dean # evab # evab=eran
+    unpublish: dean
+  "@helper/*":
     access: $all
     publish: dean
     unpublish: dean
+    
   "@*/*":
     # scoped packages
     access: $all
@@ -166,10 +171,9 @@ listen:
 # The HTTPS configuration is useful if you do not consider use a HTTP Proxy
 # https://verdaccio.org/docs/configuration#https
 https:
-  key: /verdaccio/certs/verdaccio-key.pem
-  cert: /verdaccio/certs/verdaccio-cert.pem
-  ca: /verdaccio/certs/verdaccio-csr.pem
-
+  key: /verdaccio/certs/dean-verdaccio-key.pem
+  cert: /verdaccio/certs/dean-verdaccio.pem
+  ca: /verdaccio/certs/dean-verdaccio.pem
 
 # https://verdaccio.org/docs/configuration#proxy
 # http_proxy: http://something.local/
@@ -181,24 +185,6 @@ https:
 #   headers: [{ "Content-Type": "application/json" }]
 #   endpoint: https://usagge.hipchat.com/v2/room/3729485/notification?auth_token=mySecretToken
 #   content: '{"color":"green","message":"New package published: * {{ name }}*","notify":true,"message_format":"text"}'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,21 +210,6 @@ https:
 #| .\ . . . . . . . . . \ .'' / . '|
 #| . . . . . . . . . . / .'/ . . .|
 #| . . . . . . .| . . / ./ ./ . .|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

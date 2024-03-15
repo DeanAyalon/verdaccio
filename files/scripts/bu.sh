@@ -1,16 +1,26 @@
-#!/bin/sh
+#!/bin/bash
 
-# Get scripts path
-storage=$(dirname $(dirname $(readlink -f $0)))/storage   # Verdaccio storage path
+# Verdaccio storage path
+storage=$(dirname $(dirname $(readlink -f $0)))/storage
+
+# /verdaccio
+    # /scripts/bu,sh
+    # /storage
+        # /backup
+        # /data
 
 # Relative paths
 backup="$storage/backup"
 data="$storage/data"
 
-# Backup @dean packages
-echo "Backing up @dean"
-mkdir -p "$backup"
-cp -r "$data/@dean" -t "$backup"
+# Backup important directories
+important=("@dean" "@helper")
+echo Backing up important directories
+for dir in "${important[@]}"; do
+    echo "Backing up $dir"
+    mkdir -p "$backup/$dir"
+    cp -r "$data/$dir" -t "$backup/$dir"
+done
 
 # Backup specified directories
 [ -z $1 ] && exit 0                         # 0 is a successful exit code - No more packages to backup

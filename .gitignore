@@ -1,2 +1,6 @@
 # MacOS
 .DS_STORE
+
+# Tests
+test
+files/storage

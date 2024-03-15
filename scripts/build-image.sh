@@ -10,7 +10,7 @@ help() {
 path=$(dirname $(dirname $(readlink -f $0))) # Verdaccio directory path
 
 # Flags
-version="latest"        # Default version
+version=latest        # Default version
 while getopts "hcpv:" opt; do
     case $opt in
         h)  # Help
