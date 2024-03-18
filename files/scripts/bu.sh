@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Verdaccio storage path
 storage=$(dirname $(dirname $(readlink -f $0)))/storage

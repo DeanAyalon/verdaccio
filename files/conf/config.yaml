@@ -60,7 +60,7 @@ auth:
     # You can set this to -1 to disable registration.
     # max_users: 1000
     # Hash algorithm, possible options are: "bcrypt", "md5", "sha1", "crypt".
-    # algorithm: bcrypt # by default is crypt, but is recommended use bcrypt for new installations
+    algorithm: bcrypt # by default is crypt, but is recommended use bcrypt for new installations
     # Rounds number for "bcrypt", will be ignored for other algorithms.
     # rounds: 10
 
@@ -171,9 +171,9 @@ listen:
 # The HTTPS configuration is useful if you do not consider use a HTTP Proxy
 # https://verdaccio.org/docs/configuration#https
 https:
-  key: /verdaccio/certs/dean-verdaccio-key.pem
-  cert: /verdaccio/certs/dean-verdaccio.pem
-  ca: /verdaccio/certs/dean-verdaccio.pem
+  key: /verdaccio/certs/privkey.pem
+  cert: /verdaccio/certs/fullchain.pem
+  ca: /verdaccio/certs/fullchain.pem
 
 # https://verdaccio.org/docs/configuration#proxy
 # http_proxy: http://something.local/
