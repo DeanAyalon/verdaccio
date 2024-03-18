@@ -14,26 +14,29 @@ backup="$storage/backup"
 data="$storage/data"
 
 # Backup important directories
+exitcode=0
 important=("@dean" "@helper")
 echo Backing up important directories
 for dir in "${important[@]}"; do
     echo "Backing up $dir"
     mkdir -p "$backup/$dir"
-    cp -r "$data/$dir" -t "$backup/$dir"
+    cp -r "$data/$dir" -t "$backup/$dir" || exitcode=1      # Copy failed, continue trying to backup all directories before exit 1
 done
 
 # Backup specified directories
-[ -z $1 ] && exit 0                         # 0 is a successful exit code - No more packages to backup
+[ -z $1 ] && exit $exitcode                                 # No more packages to backup
 
 echo "Backing up specified directories"
 for dir in "$@"; do
     if [ -d "$data/$dir" ]; then
-        cp -r "$data/$dir" -t "$backup"
-        echo "Backed up $dir"
+        if cp -r "$data/$dir" -t "$backup"; then
+            echo "Backed up $dir"
+        else
+            exitcode=1                                      # Copy failed, continue trying to backup all directories before exit 1
+        fi
     else
         echo "Directory $dir does not exist"
-        flag=true   # Flagging so all other packages are backed up before script fails
+        exitcode=1                                          # Dir not found, continue trying to backup all directories before exit 1
     fi
 done
-
-[ -z $flag ] || exit 1 # Fail if a directory was not found, so the clear script does not execute
+exit $exitcode
