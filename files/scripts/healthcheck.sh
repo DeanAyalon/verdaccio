@@ -7,7 +7,8 @@ temp_file=$(mktemp)
 $req > "$temp_file" || exit 1
 
 echo Server is up, checking src
-# cat $temp_file
+# Check if the grep works
+# Check grep does not collide with packages having 'localhost' in their title
 host_err=$(grep "localhost" "$temp_file")
 rm $temp_file
 
