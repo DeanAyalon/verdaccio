@@ -7,22 +7,27 @@ help() {
     echo "  -h(elp)     Display this help dialog"
 }
 
-path=$(dirname $(dirname $(readlink -f $0))) # Verdaccio directory path
+# Execution context - repo
+cd "$(dirname "$0")/.."
 
 # Flags
 version=latest        # Default version
 while getopts "hcpv:" opt; do
     case $opt in
-        h)  # Help
-            help; exit 1 ;;
-        c)  # No Cache
-            no_cache=--no-cache ;;
-        p)  # Penis
-            penis=true ;;
-        v)  # Version
-            version=$OPTARG ;;
-        \?) # undefined
-            help; exit 1 ;;
+        # Help
+        h)  help; exit 2 ;;
+
+        # No Cache
+        c)  no_cache=--no-cache ;;
+
+        # Penis
+        p)  penis=true ;;
+        
+        # Version
+        v)  version=$OPTARG ;;
+
+        # undefined
+        \?) help; exit 1 ;;
     esac
 done
 shift $((OPTIND-1))
@@ -30,14 +35,13 @@ flags=$no_cache
 
 # Build image
 echo Building Verdaccio image
-echo "Version: $version     Path: $path"
+echo "Version: $version     Path: $repo"
 echo Flags: $no_cache
 echo
-echo "> docker build $flags -t dean-verdaccio:$version $path"
-docker build $flags -t dean-verdaccio:$version $path
+echo "> docker build $flags -t dean-verdaccio:$version $repo"
+docker build $flags -t dean-verdaccio:$version $repo
 
-
-
+# Eran left me a little surprise
 if [ $penis ]; then
     echo "          DOCKER IS RISING"
     echo "…………………...„„-~^^~„-„„_"

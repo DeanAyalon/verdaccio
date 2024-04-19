@@ -1,7 +1,5 @@
 #!/bin/bash 
 
-scripts=$(dirname $(readlink -f $0))
-
 IMAGE=dean-verdaccio
 
 # Defaults
@@ -25,16 +23,11 @@ help() {
 # Flags
 while getopts "hm:p:v:" opt; do
     case $opt in
-        h)
-            help; exit 1 ;;
-        m)
-            mounts="$OPTARG" ;;
-        p)
-            port=$OPTARG ;;
-        v)
-            version=$OPTARG ;;
-        \?) 
-            help; exit 1 ;;
+        h)  help; exit 1 ;;
+        m)  mounts="$OPTARG" ;;
+        p)  port=$OPTARG ;;
+        v)  version=$OPTARG ;;
+        \?) help; exit 1 ;;
     esac
 done
 shift $((OPTIND-1))
