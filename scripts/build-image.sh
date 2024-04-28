@@ -9,6 +9,7 @@ help() {
 
 # Execution context - repo
 cd "$(dirname "$0")/.."
+repo=$(pwd)
 
 # Flags
 version=latest        # Default version

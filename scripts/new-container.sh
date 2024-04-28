@@ -11,7 +11,7 @@ help() {
     echo Use: new-container.sh [-flags] [container name]
     echo "  Default container name: dean-verdaccio"
     echo "  Flags:"
-    echo "  -m(ounts)   Specify path to mount a volume for persistant storage                               Default: $mount"
+    echo "  -m(ounts)   Specify path to mount a volume for persistant storage                               Default: $mounts"
     echo "              The mounted directory should contain a certs folder with SSL certificate files:"
     echo "                  privkey.pem and fullchain.pem"
     echo "              Free trusted certificates from Let's Encrypt can be created using the certificates repo"
