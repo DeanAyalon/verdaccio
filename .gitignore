@@ -7,7 +7,3 @@ files/storage
 
 # Env
 .env
-old.env
-
-# docker-compose
-docker-compose.yml

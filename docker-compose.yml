@@ -1,0 +1,11 @@
+services:
+  verdaccio:
+    build:
+      dockerfile: dockerfile
+    image: ${IMAGE}:${VERSION}
+    container_name: ${CONTAINER}
+    ports:
+      - ${PORT}:4873
+    volumes:
+      - ${MOUNT}/storage:/verdaccio/storage
+      - ${MOUNT}/certs:/verdaccio/certs
