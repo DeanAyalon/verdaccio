@@ -1,7 +1,13 @@
+# name: ${PROJECT} 
 services:
   verdaccio:
     build:
       dockerfile: dockerfile
+    develop:
+      watch:
+        - action: rebuild
+          path: ./files
+          target: /verdaccio
     image: ${IMAGE}:${VERSION}
     container_name: ${CONTAINER}
     ports:
