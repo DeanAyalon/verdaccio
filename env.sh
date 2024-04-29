@@ -17,14 +17,15 @@ if [ -f .env ]; then
         old=true
     else 
         # .env up to date
-        exit 2
+        exit 0
     fi
 fi
 
 # Generate .env and wait for user input
-echo generating .env file...
+echo Generating default .env file
 # Generate default .env
 cp defaults.env .env
 code .env
 [ $old ] && code old.env
-read -p "Edit the .env file, then press enter to continue, or ^C to cancel"
+echo Edit the .env file, then try again...
+exit 1
