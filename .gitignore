@@ -4,3 +4,7 @@
 # Tests
 test
 files/storage
+
+# Env
+.env
+old.env
