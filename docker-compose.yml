@@ -10,8 +10,10 @@ services:
           target: /verdaccio
     image: ${IMAGE}:${VERSION}
     container_name: ${CONTAINER}
+    environment:
+      - VERDACCIO_PROTOCOL=https
     ports:
       - ${PORT}:4873
     volumes:
-      - ${MOUNT}/storage:/verdaccio/storage
-      - ${MOUNT}/certs:/verdaccio/certs
+      - ${STORAGE}:/verdaccio/storage
+      - ${CERTS}:/verdaccio/certs:ro
