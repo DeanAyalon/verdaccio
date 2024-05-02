@@ -3,7 +3,9 @@
 
 # Tests
 test
-files/storage
+## This directory tests the bu and clear scripts in repo
+files/storage   
 
 # Env
-.env
+*.env
+!defaults.env

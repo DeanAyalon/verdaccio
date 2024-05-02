@@ -62,7 +62,7 @@ auth:
     # Hash algorithm, possible options are: "bcrypt", "md5", "sha1", "crypt".
     algorithm: bcrypt # by default is crypt, but is recommended use bcrypt for new installations
     # Rounds number for "bcrypt", will be ignored for other algorithms.
-    # rounds: 10
+    rounds: 10
 
 # https://verdaccio.org/docs/configuration#uplinks
 # a list of other known repositories we can talk to
@@ -76,7 +76,7 @@ uplinks:
 packages:
   "@dean/*":
     access: dean # evab
-    publish: dean # evab # evab=eran
+    publish: dean # evab    # evab=eran
     unpublish: dean
   "@helper/*":
     access: $all
