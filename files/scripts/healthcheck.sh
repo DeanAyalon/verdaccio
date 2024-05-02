@@ -1,6 +1,6 @@
 #!/bin/sh
 
-req="curl -f https://deanayalon.com:4873"
+req="curl -f https://$DOMAIN:$HOST_PORT"
 
 echo "> $req"
 temp_file=$(mktemp)
