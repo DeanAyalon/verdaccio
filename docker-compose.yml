@@ -1,4 +1,4 @@
-# name: ${PROJECT} 
+name: ${PROJECT} 
 services:
   verdaccio:
     build:
