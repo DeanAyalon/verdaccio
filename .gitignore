@@ -8,4 +8,4 @@ files/storage
 
 # Env
 *.env
-!defaults.env
+!template.env
