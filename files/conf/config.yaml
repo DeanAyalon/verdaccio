@@ -163,7 +163,8 @@ server:
 listen:
 # - localhost:4873              # default value
 # - http://localhost:4873       # same thing
-- https://0.0.0.0:4873          # listen on all addresses (INADDR_ANY)
+# - https://0.0.0.0:4873        # listen on all addresses (INADDR_ANY)    # Not sure which is the right one
+- https://0.0.0.0               # listen on all addresses (INADDR_ANY)
 # - https://example.org:4873    # if you want to use https
 # - "[::1]:4873"                # ipv6
 # - unix:/tmp/verdaccio.sock    # unix socket

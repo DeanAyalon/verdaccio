@@ -1,6 +1,6 @@
 #!/bin/sh
 
-req="curl -f https://$DOMAIN:$HOST_PORT"
+req="curl -f https://$DOMAIN:$PROXY_PORT"
 
 echo "> $req"
 temp_file=$(mktemp)

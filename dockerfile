@@ -15,5 +15,5 @@ COPY --chown=root:root files/scripts/* /verdaccio/scripts/
 # RUN chown root:root /verdaccio/scripts/*
 RUN chmod u+x /verdaccio/scripts/*
 
-HEALTHCHECK --interval=30s --timeout=3s \
+HEALTHCHECK --interval=10s --timeout=3s \
     CMD /verdaccio/scripts/healthcheck.sh
