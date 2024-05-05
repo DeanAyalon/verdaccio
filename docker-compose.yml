@@ -1,6 +1,6 @@
-name: ${PROJECT} 
 services:
   verdaccio:
+    profiles: []
     build:
       dockerfile: dockerfile
     develop:
@@ -8,15 +8,38 @@ services:
         - action: rebuild
           path: ./files
           target: /verdaccio
-    image: ${IMAGE}:${VERSION}
-    container_name: ${CONTAINER}
     environment:
       - VERDACCIO_PROTOCOL=https
-      - DOMAIN=${DOMAIN}
-      - HOST_PORT=${PORT:-4873}
-      - PROXY_PORT=${PROXY_PORT:-${PORT:-4873}}
+
+  verdaccio-live:
+    extends: verdaccio
+    profiles:
+      - live
+    image: jackdeaniels/private:verdaccio-latest
+    container_name: verdaccio
     ports:
-      - ${PORT:-4873}:4873
+      - ${VERDACCIO_PORT:-4873}:4873
     volumes:
-      - ${STORAGE}:/verdaccio/storage
-      - ${CERTS}:/verdaccio/certs:ro
+      - ${VERDACCIO_STORAGE}:/verdaccio/storage
+      - ${VERDACCIO_CERTS}:/verdaccio/certs:ro
+    environment:
+      - DOMAIN=${VERDACCIO_DOMAIN}
+      - HOST_PORT=${VERDACCIO_PORT:-4873}
+      - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_PORT:-4873}}
+      
+  verdaccio-dev:
+    extends: verdaccio
+    profiles:
+      - dev
+    image: jackdeaniels/private:verdaccio-dev
+    container_name: verdaccio-dev
+    ports:
+      - ${VERDACCIO_DEV_PORT:-4874}:4873
+    volumes:
+      - ${VERDACCIO_DEV_STORAGE}:/verdaccio/storage
+      - ${VERDACCIO_DEV_CERTS}:/verdaccio/certs:ro
+    environment:
+      - DOMAIN=${VERDACCIO_DEV_DOMAIN}
+      - HOST_PORT=${VERDACCIO_DEV_PORT:-4874}
+      - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_DEV_PORT:-4874}}
+    
