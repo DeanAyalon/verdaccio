@@ -34,12 +34,12 @@ services:
     image: jackdeaniels/private:verdaccio-dev
     container_name: verdaccio-dev
     ports:
-      - ${VERDACCIO_DEV_PORT:-4874}:4873
+      - ${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}:4873
     volumes:
-      - ${VERDACCIO_DEV_STORAGE}:/verdaccio/storage
-      - ${VERDACCIO_DEV_CERTS}:/verdaccio/certs:ro
+      - ${VERDACCIO_DEV_STORAGE:-${VERDACCIO_STORAGE}}:/verdaccio/storage
+      - ${VERDACCIO_DEV_CERTS:-${VERDACCIO_CERTS}}:/verdaccio/certs:ro
     environment:
       - DOMAIN=${VERDACCIO_DEV_DOMAIN}
-      - HOST_PORT=${VERDACCIO_DEV_PORT:-4874}
-      - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_DEV_PORT:-4874}}
+      - HOST_PORT=${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}
+      - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}}
     
