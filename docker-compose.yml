@@ -13,9 +13,9 @@ services:
     environment:
       - VERDACCIO_PROTOCOL=https
       - DOMAIN=${DOMAIN}
-      - HOST_PORT=${PORT}
+      - HOST_PORT=${PORT:-4873}
     ports:
-      - ${PORT}:4873
+      - ${PORT:-4873}:4873
     volumes:
       - ${STORAGE}:/verdaccio/storage
       - ${CERTS}:/verdaccio/certs:ro
