@@ -10,6 +10,8 @@ services:
           target: /verdaccio
     environment:
       - VERDACCIO_PROTOCOL=https
+      - LATEST_ENV=0.9
+      - VERDACCIO_ENV=${VERDACCIO_ENV:?Environment file not up to date}
 
   verdaccio-live:
     extends: verdaccio
