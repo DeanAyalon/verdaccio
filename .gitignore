@@ -9,3 +9,6 @@ files/storage
 # Env
 *.env
 !template.env
+
+# in-repo mounts
+mounts

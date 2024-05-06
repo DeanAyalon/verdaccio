@@ -22,8 +22,8 @@ services:
     ports:
       - ${VERDACCIO_PORT:-4873}:4873
     volumes:
-      - ${VERDACCIO_STORAGE}:/verdaccio/storage
-      - ${VERDACCIO_CERTS}:/verdaccio/certs:ro
+      - ${VERDACCIO_STORAGE:-./mounts/storage}:/verdaccio/storage
+      - ${VERDACCIO_CERTS:-./mounts/certs}:/verdaccio/certs:ro
     environment:
       # - DOMAIN=${VERDACCIO_DOMAIN}
       - DOMAIN=${VERDACCIO_DOMAIN:?}
@@ -39,8 +39,8 @@ services:
     ports:
       - ${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}:4873
     volumes:
-      - ${VERDACCIO_DEV_STORAGE:-${VERDACCIO_STORAGE}}:/verdaccio/storage
-      - ${VERDACCIO_DEV_CERTS:-${VERDACCIO_CERTS}}:/verdaccio/certs:ro
+      - ${VERDACCIO_DEV_STORAGE:-${VERDACCIO_STORAGE:-./mounts/storage}}:/verdaccio/storage
+      - ${VERDACCIO_DEV_CERTS:-${VERDACCIO_CERTS:-./mounts/certs}}:/verdaccio/certs:ro
     environment:
       - DOMAIN=${VERDACCIO_DEV_DOMAIN:-${VERDACCIO_DOMAIN:?}}
       - HOST_PORT=${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}
