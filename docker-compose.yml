@@ -25,7 +25,8 @@ services:
       - ${VERDACCIO_STORAGE}:/verdaccio/storage
       - ${VERDACCIO_CERTS}:/verdaccio/certs:ro
     environment:
-      - DOMAIN=${VERDACCIO_DOMAIN}
+      # - DOMAIN=${VERDACCIO_DOMAIN}
+      - DOMAIN=${VERDACCIO_DOMAIN:?}
       - HOST_PORT=${VERDACCIO_PORT:-4873}
       - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_PORT:-4873}}
       
@@ -41,7 +42,7 @@ services:
       - ${VERDACCIO_DEV_STORAGE:-${VERDACCIO_STORAGE}}:/verdaccio/storage
       - ${VERDACCIO_DEV_CERTS:-${VERDACCIO_CERTS}}:/verdaccio/certs:ro
     environment:
-      - DOMAIN=${VERDACCIO_DEV_DOMAIN}
+      - DOMAIN=${VERDACCIO_DEV_DOMAIN:-${VERDACCIO_DOMAIN:?}}
       - HOST_PORT=${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}
       - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}}
     
