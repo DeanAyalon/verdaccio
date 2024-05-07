@@ -11,4 +11,7 @@ files/storage
 !template.env
 
 # in-repo mounts
-mounts
+mounts/*
+!mounts/live
+mounts/live/*
+!mounts/live/conf

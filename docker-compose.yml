@@ -10,7 +10,7 @@ services:
           target: /verdaccio
     environment:
       - VERDACCIO_PROTOCOL=https
-      - LATEST_ENV=0.9
+      - LATEST_ENV=1.0
       - VERDACCIO_ENV=${VERDACCIO_ENV:?Environment file not up to date}
 
   verdaccio-live:
@@ -22,8 +22,9 @@ services:
     ports:
       - ${VERDACCIO_PORT:-4873}:4873
     volumes:
-      - ${VERDACCIO_STORAGE:-./mounts/storage}:/verdaccio/storage
-      - ${VERDACCIO_CERTS:-./mounts/certs}:/verdaccio/certs:ro
+      - ./mounts/live/conf:/verdaccio/conf:ro
+      - ${VERDACCIO_STORAGE:-./mounts/live/storage}:/verdaccio/storage
+      - ${VERDACCIO_CERTS:-./mounts/live/certs}:/verdaccio/certs:ro
     environment:
       # - DOMAIN=${VERDACCIO_DOMAIN}
       - DOMAIN=${VERDACCIO_DOMAIN:?}
@@ -39,10 +40,10 @@ services:
     ports:
       - ${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}:4873
     volumes:
-      - ${VERDACCIO_DEV_STORAGE:-${VERDACCIO_STORAGE:-./mounts/storage}}:/verdaccio/storage
-      - ${VERDACCIO_DEV_CERTS:-${VERDACCIO_CERTS:-./mounts/certs}}:/verdaccio/certs:ro
+      - ./mounts/${VERDACCIO_DEV_CONF:-live}/conf:/verdaccio/conf:ro
+      - ${VERDACCIO_DEV_STORAGE:-${VERDACCIO_STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
+      - ${VERDACCIO_DEV_CERTS:-${VERDACCIO_CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
     environment:
       - DOMAIN=${VERDACCIO_DEV_DOMAIN:-${VERDACCIO_DOMAIN:?}}
       - HOST_PORT=${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}
       - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}}
-    
