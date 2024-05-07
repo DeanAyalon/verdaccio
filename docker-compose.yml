@@ -2,12 +2,8 @@ services:
   verdaccio:
     profiles: []
     build:
+      context: .
       dockerfile: dockerfile
-    develop:
-      watch:
-        - action: rebuild
-          path: ./files
-          target: /verdaccio
     environment:
       - VERDACCIO_PROTOCOL=https
       - LATEST_ENV=1.0
@@ -36,6 +32,11 @@ services:
     profiles:
       - dev
     image: jackdeaniels/private:verdaccio-dev
+    develop:
+      watch:
+        - action: rebuild
+          path: ./files
+          target: /verdaccio
     container_name: verdaccio-dev
     ports:
       - ${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}:4873
