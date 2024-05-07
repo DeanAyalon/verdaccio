@@ -1,16 +1,8 @@
 services:
   verdaccio:
-    profiles: []
-    build:
-      context: .
-      dockerfile: dockerfile
-    environment:
-      - VERDACCIO_PROTOCOL=https
-      - LATEST_ENV=1.0
-      - VERDACCIO_ENV=${VERDACCIO_ENV:?Environment file not up to date}
-
-  verdaccio-live:
-    extends: verdaccio
+    extends: 
+      file: compose.verdaccio.yml
+      service: verdaccio
     profiles:
       - live
     image: jackdeaniels/private:verdaccio-latest
@@ -28,7 +20,9 @@ services:
       - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_PORT:-4873}}
       
   verdaccio-dev:
-    extends: verdaccio
+    extends: 
+      file: compose.verdaccio.yml
+      service: verdaccio
     profiles:
       - dev
     image: jackdeaniels/private:verdaccio-dev
