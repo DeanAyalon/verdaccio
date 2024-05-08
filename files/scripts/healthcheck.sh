@@ -3,7 +3,10 @@
 check_env() {
     echo Checking environment
     # VERDACCIO_ENV is a container environment variable
-    ([ -z $VERDACCIO_ENV ] || [ -z $LATEST_ENV ] || [ $LATEST_ENV != $VERDACCIO_ENV ]) && exit 1
+    if [ -z $ENV_VERSION ] || [ -z $LATEST_ENV ] || [ $LATEST_ENV != $ENV_VERSION ]; then 
+        echo Environment file not up to date! 
+        exit 1
+    fi
 }
 
 check_site() {
@@ -17,6 +20,7 @@ check_site() {
 
     echo Server is up, checking src
     echo This check needs updating....
+    echo Marking container as healthy
 
     # TODO: IMPLEMENT BETTER CHECKING, AND MAKE SURE THE CORRECT URL IS IN SCRIPTS
     # host_err=$(grep "localhost" "$temp_file")

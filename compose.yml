@@ -1,27 +1,27 @@
 services:
   verdaccio:
     extends: 
-      file: compose.verdaccio.yml
+      file: compose.base.yml
       service: verdaccio
     profiles:
       - live
     image: jackdeaniels/private:verdaccio-latest
     container_name: verdaccio
     ports:
-      - ${VERDACCIO_PORT:-4873}:4873
+      - ${HOST_PORT:-4873}:4873
     volumes:
       - ./mounts/live/conf:/verdaccio/conf:ro
-      - ${VERDACCIO_STORAGE:-./mounts/live/storage}:/verdaccio/storage
-      - ${VERDACCIO_CERTS:-./mounts/live/certs}:/verdaccio/certs:ro
+      - ${STORAGE:-./mounts/live/storage}:/verdaccio/storage
+      - ${CERTS:-./mounts/live/certs}:/verdaccio/certs:ro
     environment:
       - VERDACCIO_PROTOCOL=https
-      - DOMAIN=${VERDACCIO_DOMAIN:?}
-      - HOST_PORT=${VERDACCIO_PORT:-4873}
-      - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_PORT:-4873}}
+      - DOMAIN=${DOMAIN:?}
+      - HOST_PORT=${HOST_PORT:-4873}
+      - PROXY_PORT=${PROXY_PORT:-${HOST_PORT:-4873}}
       
   verdaccio-dev:
     extends: 
-      file: compose.verdaccio.yml
+      file: compose.base.yml
       service: verdaccio
     profiles:
       - dev
@@ -35,11 +35,11 @@ services:
     # ports:
     #   - ${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}:4873
     volumes:
-      - ./mounts/${VERDACCIO_DEV_CONF:-live/conf}:/verdaccio/conf:ro
-      - ${VERDACCIO_DEV_STORAGE:-${VERDACCIO_STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
-      - ${VERDACCIO_DEV_CERTS:-${VERDACCIO_CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
+      - ./mounts/${CONF_DEV:-live/conf}:/verdaccio/conf:ro
+      - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
+      - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
     environment:
-      - DOMAIN=${VERDACCIO_DEV_DOMAIN:-${VERDACCIO_DOMAIN:?}}
-      - HOST_PORT=${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}
-      - PROXY_PORT=${VERDACCIO_PROXY_PORT:-${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}}
-      - VIRTUAL_HOST=${VERDACCIO_DEV_DOMAIN:-${VERDACCIO_DOMAIN:?}}
+      - DOMAIN=${DOMAIN_DEV:-${DOMAIN:?}}
+      - HOST_PORT=${HOST_PORT_DEV:-${HOST_PORT:-4873}}
+      - PROXY_PORT=${PROXY_PORT:-${PORT_DEV:-${HOST_PORT:-4873}}}
+      - VIRTUAL_HOST=${DOMAIN_DEV:-${DOMAIN:?}}

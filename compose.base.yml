@@ -1,11 +1,10 @@
+name: dean-server
 services:
   # Base verdaccio service, extended into live and dev versions in docker-compose.yml
   verdaccio:
     build:
       context: .
       dockerfile: dockerfile
-    expose: 
-      - 4873
     environment:
-      - LATEST_ENV=1.0
-      - VERDACCIO_ENV=${VERDACCIO_ENV:?Environment file not up to date}
+      - LATEST_ENV=1.2.0
+      - ENV_VERSION=${ENV_VERSION:?Environment file not up to date}
