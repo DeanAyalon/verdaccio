@@ -7,5 +7,5 @@ services:
     expose: 
       - 4873
     environment:
-      - LATEST_ENV=1.0
+      - LATEST_ENV=1.0-mapping
       - VERDACCIO_ENV=${VERDACCIO_ENV:?Environment file not up to date}

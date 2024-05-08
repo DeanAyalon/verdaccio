@@ -1,0 +1,10 @@
+# This compose file adds port mapping from host machine to verdaccio container
+
+services:
+  verdaccio:
+    ports:
+      - ${VERDACCIO_PORT:-4873}:4873
+
+  verdaccio-dev:
+    ports:
+      - ${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}:4873
