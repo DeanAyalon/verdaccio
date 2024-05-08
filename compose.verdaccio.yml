@@ -4,7 +4,8 @@ services:
     build:
       context: .
       dockerfile: dockerfile
+    expose: 
+      - 4873
     environment:
-      - VERDACCIO_PROTOCOL=https
       - LATEST_ENV=1.0
       - VERDACCIO_ENV=${VERDACCIO_ENV:?Environment file not up to date}
