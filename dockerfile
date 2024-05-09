@@ -15,5 +15,5 @@ RUN chmod u+x /verdaccio/scripts/*
 # USER verdaccio
 # ^ Both these options crash the container on startup, exit code 2, no logs, no errors
 
-HEALTHCHECK --interval=10s --timeout=3s \
+HEALTHCHECK --interval=30s --timeout=3s \
     CMD /verdaccio/scripts/healthcheck.sh

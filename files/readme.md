@@ -1,1 +1,1 @@
-This directory gets copied into the container
+This directory gets copied into the image

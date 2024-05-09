@@ -62,7 +62,7 @@ auth:
     # Hash algorithm, possible options are: "bcrypt", "md5", "sha1", "crypt".
     algorithm: bcrypt # by default is crypt, but is recommended use bcrypt for new installations
     # Rounds number for "bcrypt", will be ignored for other algorithms.
-    rounds: 10
+    rounds: 12
 
 # https://verdaccio.org/docs/configuration#uplinks
 # a list of other known repositories we can talk to
@@ -137,12 +137,12 @@ server:
 # // url -> https://somedomain.org/second_prefix/'
 
 # https://verdaccio.org/docs/configuration#security
-# security:
-#   api:
+security:
+  api:
 #     legacy: true
-#     jwt:
-#       sign:
-#         expiresIn: 29d
+    jwt:
+      sign:
+        expiresIn: 7d
 #       verify:
 #         someProp: [value]
 #    web:
@@ -221,7 +221,7 @@ middlewares:
 # https://verdaccio.org/docs/logger
 # log settings
 # log: { type: stdout, format: pretty, level: debug }
-log: { type: file, path: verdaccio.log, level: info }
+log: { type: file, path: /verdaccio/logs/verdaccio.log, level: http }
 #experiments:
 #  # support for npm token command
 #  token: false
