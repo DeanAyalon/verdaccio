@@ -9,8 +9,8 @@ services:
     container_name: verdaccio
     volumes:
       - ./mounts/live/conf:/verdaccio/conf:ro
-      - ${STORAGE:-./mounts/dev/storage}:/verdaccio/storage
-      - ${CERTS:-./mounts/dev/certs}:/verdaccio/certs:ro
+      - ${STORAGE:-./mounts/live/storage}:/verdaccio/storage
+      - ${CERTS:-./mounts/live/certs}:/verdaccio/certs:ro
     environment:
       - DOMAIN=${DOMAIN:?}
       - HOST_PORT=${HOST_PORT:-4873}
@@ -33,7 +33,7 @@ services:
     # ports:
     #   - ${HOST_PORT:-4873}:4873
     volumes:
-      - ./mounts/${CONF_DEV:-live/conf}:/verdaccio/conf:ro
+      - ${CONF_DEV:-./mounts/live/conf}:/verdaccio/conf:ro
       - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
       - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
     environment:
@@ -52,11 +52,11 @@ services:
     profiles:
       - v1
     image: jackdeaniels/private:verdaccio-v1
-    container_name: verdaccio
+    container_name: verdaccio-v1
     ports:
       - ${HOST_PORT:-4873}:4873
     volumes:
-      - ./mounts/live/conf:/verdaccio/conf:ro
+      - ./mounts/v1/conf:/verdaccio/conf:ro
       - ${STORAGE:-./mounts/live/storage}:/verdaccio/storage
       - ${CERTS:-./mounts/live/certs}:/verdaccio/certs:ro
     environment:

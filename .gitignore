@@ -12,6 +12,11 @@ files/storage
 
 # in-repo mounts
 mounts/*
+# Live version - https proxy
 !mounts/live
 mounts/live/*
 !mounts/live/conf
+# old v1 - https protocol
+!mounts/v1
+mounts/v1/*
+!mounts/v1/conf
