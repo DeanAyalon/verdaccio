@@ -1,10 +1,7 @@
-# Use the official Verdaccio image as the base
 FROM verdaccio/verdaccio
-
-# Expose the port Verdaccio runs on and set verrdaccio protocol to HTTPS
 EXPOSE 4873
 
-# Get curl and define healthcheck script
+# Get curl for healthcheck
 USER root
 RUN apk update && apk add curl
 
@@ -12,6 +9,11 @@ RUN apk update && apk add curl
 COPY --chown=root:root files/scripts/* /verdaccio/scripts/
 # Script execution permissions
 RUN chmod u+x /verdaccio/scripts/*
+
+# Switch user
+# USER $VERDACCIO_USER_UID
+# USER verdaccio
+# ^ Both these options crash the container on startup, exit code 2, no logs, no errors
 
 HEALTHCHECK --interval=10s --timeout=3s \
     CMD /verdaccio/scripts/healthcheck.sh

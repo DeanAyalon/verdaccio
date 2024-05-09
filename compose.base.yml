@@ -6,5 +6,5 @@ services:
       context: .
       dockerfile: dockerfile
     environment:
-      - LATEST_ENV=1.2.0
+      - LATEST_ENV=1.2.1
       - ENV_VERSION=${ENV_VERSION:?Environment file not up to date}

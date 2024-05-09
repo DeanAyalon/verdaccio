@@ -7,6 +7,52 @@ services:
       - live
     image: jackdeaniels/private:verdaccio-latest
     container_name: verdaccio
+    volumes:
+      - ./mounts/live/conf:/verdaccio/conf:ro
+      - ${STORAGE:-./mounts/dev/storage}:/verdaccio/storage
+      - ${CERTS:-./mounts/dev/certs}:/verdaccio/certs:ro
+    environment:
+      - DOMAIN=${DOMAIN:?}
+      - HOST_PORT=${HOST_PORT:-4873}
+      - PROXY_PORT=${PROXY_PORT:-${HOST_PORT:-4873}}
+      - VIRTUAL_HOST=${DOMAIN:?}
+      
+  verdaccio-dev:
+    extends: 
+      file: compose.base.yml
+      service: verdaccio
+    profiles:
+      - dev
+    image: jackdeaniels/private:verdaccio-dev
+    container_name: verdaccio-dev
+    develop:
+      watch:
+        - action: rebuild
+          path: ./files
+          target: /verdaccio
+    # ports:
+    #   - ${HOST_PORT:-4873}:4873
+    volumes:
+      - ./mounts/${CONF_DEV:-live/conf}:/verdaccio/conf:ro
+      - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
+      - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
+    environment:
+      - DOMAIN=${DOMAIN_DEV:-${DOMAIN:?}}
+      - HOST_PORT=${HOST_PORT_DEV:-${HOST_PORT:-4873}}
+      - PROXY_PORT=${PROXY_PORT:-${PORT_DEV:-${HOST_PORT:-4873}}}
+      - VIRTUAL_HOST=${DOMAIN_DEV:-${DOMAIN:?}}
+
+
+
+  # Old configuration - Uses nginx-v1
+  verdaccio-v1:
+    extends: 
+      file: compose.base.yml
+      service: verdaccio
+    profiles:
+      - v1
+    image: jackdeaniels/private:verdaccio-v1
+    container_name: verdaccio
     ports:
       - ${HOST_PORT:-4873}:4873
     volumes:
@@ -19,27 +65,3 @@ services:
       - HOST_PORT=${HOST_PORT:-4873}
       - PROXY_PORT=${PROXY_PORT:-${HOST_PORT:-4873}}
       
-  verdaccio-dev:
-    extends: 
-      file: compose.base.yml
-      service: verdaccio
-    profiles:
-      - dev
-    image: jackdeaniels/private:verdaccio-dev
-    develop:
-      watch:
-        - action: rebuild
-          path: ./files
-          target: /verdaccio
-    container_name: verdaccio-dev
-    # ports:
-    #   - ${VERDACCIO_DEV_PORT:-${VERDACCIO_PORT:-4873}}:4873
-    volumes:
-      - ./mounts/${CONF_DEV:-live/conf}:/verdaccio/conf:ro
-      - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
-      - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
-    environment:
-      - DOMAIN=${DOMAIN_DEV:-${DOMAIN:?}}
-      - HOST_PORT=${HOST_PORT_DEV:-${HOST_PORT:-4873}}
-      - PROXY_PORT=${PROXY_PORT:-${PORT_DEV:-${HOST_PORT:-4873}}}
-      - VIRTUAL_HOST=${DOMAIN_DEV:-${DOMAIN:?}}
