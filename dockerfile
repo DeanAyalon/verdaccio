@@ -1,4 +1,4 @@
-FROM verdaccio/verdaccio
+FROM verdaccio/verdaccio:5.30.3
 EXPOSE 4873
 
 # Get curl for healthcheck

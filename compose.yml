@@ -35,8 +35,8 @@ services:
     volumes:
       - ${CONF_DEV:-./mounts/live/conf}:/verdaccio/conf:ro
       - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
-      # - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
       - ${LOGS_DEV:-./mounts/dev/logs}:/verdaccio/logs
+      # - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
     environment:
       - DOMAIN=${DOMAIN_DEV:-${DOMAIN:?}}
       - HOST_PORT=${HOST_PORT_DEV:-${HOST_PORT:-4873}}
