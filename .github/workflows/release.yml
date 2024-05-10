@@ -1,0 +1,58 @@
+name: Release Docker Image
+run-name: ${{ github.actor }} pushed a release to ${{ github.event.ref }}
+on:
+  push:
+    branches: 
+      - main
+      - dev
+      - release/*
+    paths:
+      - dockerfile
+      - files
+
+jobs:
+  release:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    # - name: Login to Docker Hub
+    #   uses: docker/login-action@v3
+    #   with:
+    #     username: ${{ secrets.DOCKERHUB_USER }}
+    #     password: ${{ secrets.DOCKERHUB_KEY }}
+        
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}        
+      
+    # GitHub keeps secrets hidden from the console, printing '***' instead
+    ## TODO: Could they still be accessed using http requests?
+    # - name: VULNERABILITY??
+    #   run: echo ${{ secrets.DOCKERHUB_USER }}
+
+      # This script saves an environment variable TAG to GITHUB_OUTPUT
+    - name: Determine release tag from branch name
+      id: release-tag
+      run: ./.github/scripts/release-tag.sh ${{ github.event.ref }}
+
+    - name: Build image
+      env: 
+        TAG: ${{ steps.release-tag.outputs.TAG }}
+      run: | 
+        docker build . -t ghcr.io/deanayalon/verdaccio:$TAG
+      # docker tag ghcr.io/deanayalon/verdaccio:$TAG jackdeaniels/private:verdaccio-$TAG
+
+    - name: List images
+      run: docker image ls
+
+    - name: Push images
+      env: 
+        TAG: ${{ steps.release-tag.outputs.tag }}
+      run: | 
+        docker push ghcr.io/deanayalon/verdaccio:$TAG
+      # docker push jackdeaniels/private:verdaccio-$TAG
