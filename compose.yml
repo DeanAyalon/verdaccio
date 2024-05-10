@@ -10,7 +10,6 @@ services:
     volumes:
       - ./mounts/live/conf:/verdaccio/conf:ro
       - ${STORAGE:-./mounts/live/storage}:/verdaccio/storage
-      - ${CERTS:-./mounts/live/certs}:/verdaccio/certs:ro
       - ${LOGS:-./mounts/live/logs}:/verdaccio/logs
     environment:
       - DOMAIN=${DOMAIN:?}
@@ -36,7 +35,7 @@ services:
     volumes:
       - ${CONF_DEV:-./mounts/live/conf}:/verdaccio/conf:ro
       - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
-      - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
+      # - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
       - ${LOGS_DEV:-./mounts/dev/logs}:/verdaccio/logs
     environment:
       - DOMAIN=${DOMAIN_DEV:-${DOMAIN:?}}
