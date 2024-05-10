@@ -1,0 +1,22 @@
+services:     
+  verdaccio-dev:
+    extends: 
+      file: compose.base.yml
+      service: verdaccio
+    develop:
+      watch:
+        - action: rebuild
+          path: ./files
+          target: /verdaccio
+    # ports:
+    #   - ${HOST_PORT:-4873}:4873
+    volumes:
+      - ${CONF_DEV:-./mounts/live/conf}:/verdaccio/conf:ro
+      - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
+      - ${LOGS_DEV:-./mounts/dev/logs}:/verdaccio/logs
+      # - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
+    environment:
+      - DOMAIN=${DOMAIN_DEV:-${DOMAIN:?}}
+      - HOST_PORT=${HOST_PORT_DEV:-${HOST_PORT:-4873}}
+      - PROXY_PORT=${PROXY_PORT:-${PORT_DEV:-${HOST_PORT:-4873}}}
+      - VIRTUAL_HOST=${DOMAIN_DEV:-${DOMAIN:?}}

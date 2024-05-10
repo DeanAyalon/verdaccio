@@ -1,0 +1,19 @@
+FROM verdaccio/verdaccio:6.0.0-beta.2
+EXPOSE 4873
+
+# Get curl for healthcheck
+USER root
+RUN apk update && apk add curl
+
+# Copy scripts into container
+COPY --chown=root:root files/scripts/* /verdaccio/scripts/
+# Script execution permissions
+RUN chmod u+x /verdaccio/scripts/*
+
+# Switch user
+# USER $VERDACCIO_USER_UID
+# USER verdaccio
+# ^ Both these options crash the container on startup, exit code 2, no logs, no errors
+
+HEALTHCHECK --interval=30s --timeout=3s \
+    CMD /verdaccio/scripts/healthcheck.sh
