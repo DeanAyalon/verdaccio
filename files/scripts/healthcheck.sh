@@ -18,27 +18,14 @@ check_site() {
     temp_file=$(mktemp)
     $req > "$temp_file" || exit 1
 
-    echo Server is up, checking src
-    echo This check needs updating....
-    echo Marking container as healthy
-
-    # TODO: IMPLEMENT BETTER CHECKING, AND MAKE SURE THE CORRECT URL IS IN SCRIPTS
-    # host_err=$(grep "localhost" "$temp_file")
-    # rm $temp_file
-
-    # if [ ! -z "$host_err" ]; then
-    #     echo "Script src incorrectly set to localhost"
-    #     exit 1
-    # else
-    #     echo "Site is responsive"
-    #     exit 0
-    # fi
+    echo Server is up and accessible
 }
 
 main() {
     echo Starting Verdaccio healthcheck
     check_env
     check_site
+    echo "Container is healthy :)"
 }
 
 main

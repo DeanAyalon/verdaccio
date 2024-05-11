@@ -8,7 +8,7 @@ on:
       - release/*
     paths:
       - dockerfile
-      - files
+      - files/**
 
 jobs:
   release:

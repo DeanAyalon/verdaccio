@@ -26,6 +26,7 @@ services:
     profiles:
       - dev
 
+  # Uses the beta version of Verdaccio - No errors were observed
   verdaccio-beta:
     extends: 
       file: compose.dev.yml
@@ -36,26 +37,3 @@ services:
       - beta
     build:
       dockerfile: dockerfile.beta
-
-
-  # Old configuration - Uses nginx-v1
-  verdaccio-v1:
-    extends: 
-      file: compose.base.yml
-      service: verdaccio
-    profiles:
-      - v1
-    image: jackdeaniels/private:verdaccio-v1
-    container_name: verdaccio-v1
-    ports:
-      - ${HOST_PORT:-4873}:4873
-    volumes:
-      - ./mounts/v1/conf:/verdaccio/conf:ro
-      - ${STORAGE:-./mounts/live/storage}:/verdaccio/storage
-      - ${CERTS:-./mounts/live/certs}:/verdaccio/certs:ro
-    environment:
-      - VERDACCIO_PROTOCOL=https
-      - DOMAIN=${DOMAIN:?}
-      - HOST_PORT=${HOST_PORT:-4873}
-      - PROXY_PORT=${PROXY_PORT:-${HOST_PORT:-4873}}
-      
