@@ -4,7 +4,7 @@ This is the repository managing my own [Verdaccio](https://github.com/verdaccio/
 The server is private and allows no public access, the code is shared for public reference.<br>
 This repository is part of the larger [dean-server](https://github.com/DeanAyalon/dean-server) monorepo, and can be ran from there as well as an individual repository.
 
-# Use
+# Using this Repo
 ## Requirements
 - Docker Engine or Docker Desktop, with Docker Compose installed (Built in)
     - This repository uses the new `docker compose`, it is unknown how well it would work with legacy `docker-compose` versions
@@ -27,6 +27,13 @@ Docker compose can be ran from the context of this repository, but it is recomme
 
 **It is recommended to use this repository paired with [dean-nginx](https://github.com/DeanAyalon/dean-nginx) or your own version of [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)**
 
+### Profile
+There are three configured profiles:
+- **live** - Production service as used on my server
+- **dev** - Development service that can be used in parallel with production
+- **beta** - Beta version using the next Verdaccio, unstable, for testing purposes
+
+## Use
 After running, use Verdaccio as you would with npm, simply add `--registry=<url>`
 > ex. `npm --registry=https://verdaccio.deanayalon.com publish my-package`
 Any package not within the registry will be proxied to https://npmjs.com
