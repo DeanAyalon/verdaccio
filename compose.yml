@@ -5,7 +5,7 @@ services:
       service: verdaccio
     profiles:
       - live
-    image: jackdeaniels/private:verdaccio-latest
+    image: ghcr.io/deanayalon/verdaccio:stable
     container_name: verdaccio
     volumes:
       - ./mounts/live/conf:/verdaccio/conf:ro
@@ -21,7 +21,7 @@ services:
     extends: 
       file: compose.dev.yml
       service: verdaccio-dev
-    image: jackdeaniels/private:verdaccio-dev
+    image: ghcr.io/deanayalon/verdaccio:dev
     container_name: verdaccio-dev
     profiles:
       - dev
@@ -31,9 +31,10 @@ services:
     extends: 
       file: compose.dev.yml
       service: verdaccio-dev
-    image: jackdeaniels/private:verdaccio-beta
+    image: ghcr.io/deanayalon/verdaccio:beta
     container_name: verdaccio-beta
     profiles:
       - beta
     build:
+      # Will in the future use default dockerfile within beta branch
       dockerfile: dockerfile.beta

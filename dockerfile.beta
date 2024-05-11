@@ -5,9 +5,8 @@ EXPOSE 4873
 USER root
 RUN apk update && apk add curl
 
-# Copy scripts into container
+# Copy scripts into container and allow execution
 COPY --chown=root:root files/scripts/* /verdaccio/scripts/
-# Script execution permissions
 RUN chmod u+x /verdaccio/scripts/*
 
 # Switch user
