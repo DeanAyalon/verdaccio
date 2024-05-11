@@ -78,6 +78,16 @@ packages:
     access: dean # evab
     publish: dean # evab    # evab=eran
     unpublish: dean
+  "@deanayalon/*":
+    access: dean # evab
+    publish: dean # evab    # evab=eran
+    unpublish: dean
+
+  "@yeda-water/*":
+    access: dean
+    publish: dean
+    unpublish: dean
+
   "@helper/*":
     access: $all
     publish: dean
