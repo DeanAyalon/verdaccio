@@ -57,33 +57,34 @@ Unsure, but opening port 4873 and setting the `VERDACCIO_PROTOCOL` environment v
 > THIS IS NOT RECOMMENDED, ALL COMMUNICATION WILL BE UNENCRYPTED, INCLUDING PASSWORDS AND PRIVATE PACKAGES!
 > > Regardless, this possibility will be checked for ease of local development
 
+**⚠️ SSL certificates can be issued to an IP if no domain is available - So HTTPS is always possible for development purposes as well!**
 
+# Contact Me!
+Hi, I am [Dean Ayalon](https://deanayalon.com), a software developer from Israel.<br>
+If you're interested in my skills, please take a look at [my profile](https://github.com/DeanAyalon) for my technology stack and other projects :)
 
-# About
-Hi, I am [Dean Ayalon](https://deanayalon.com), a software developer from Israel.
-
-## Contact Me!
 Feel free to contact me for any reason, including:
 - Instructions, explanations and help
 - Code recommendations and feature requests
-- Hiring - As of the current commit, I am looking for a job!
+- Collaborations - **Invite me to your projects**, I'm constantly looking for something new to work on :)
+- Hiring - As of the current commit, I am [looking for a job](https://deanayalon.com/resume)!
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DeanAyalon)
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://deanayalon.com/linkedin)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://deanayalon.com/whatsapp)
 [![Email](https://img.shields.io/badge/Email-3693F3?style=for-the-badge&logo=icloud&logoColor=white)](mailto:dev@deanayalon.com) 
-[![Call Me](https://custom-icon-badges.demolab.com/badge/Call_Me-blue.svg?logo=phone&logoColor=white&style=for-the-badge)](tel:+972549009763)
+[![Call Me](https://custom-icon-badges.demolab.com/badge/Call_Me-blue.svg?logo=phone&logoColor=white&style=for-the-badge)](https://deanayalon.com)
 
 
 ## Thanks
 - [evab](https://github.com/eranbraun) - For continuous guidance and support, through all my nagging
 
-## Technologies used in this repository
-[![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://npmjs.com)
+## Featured Technologies
 [![Verdaccio](https://img.shields.io/badge/Verdaccio-4B5E40.svg?style=for-the-badge&logo=verdaccio&logoColor=white)](https://npmjs.com)
-
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/DeanAyalon/verdaccio/pkgs/container/verdaccio)
 
-[![Git](https://img.shields.io/badge/git-F05032.svg?style=for-the-badge&logo=git&logoColor=white)](https://github.com/DeanAyalon)
-[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DeanAyalon)
+[![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://npmjs.com)
+![Shell](https://img.shields.io/badge/shell-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 [![GitHub Actions](https://img.shields.io/badge/github-actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/DeanAyalon/verdaccio/actions)
+
+
