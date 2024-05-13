@@ -50,7 +50,6 @@ The configuration file should work as is.<br>
 > The problem with running Verdaccio without proxy is that it caches its html for an hour. This makes the webserver only work for the first url requested.<br>
 > Therefore, it is recommended setting the healthcheck interval to 10s and building a new image, so that the correct url will be locked right away.
 
-
 ### HTTP -  Unrecommended
 Unsure, but opening port 4873 and setting the `VERDACCIO_PROTOCOL` environment variable to `http` may allow for launching the container with neither proxy, nor https encryption.
 
@@ -58,26 +57,8 @@ Unsure, but opening port 4873 and setting the `VERDACCIO_PROTOCOL` environment v
 > > Regardless, this possibility will be checked for ease of local development
 
 **⚠️ SSL certificates can be issued to an IP if no domain is available - So HTTPS is always possible for development purposes as well!**
-
-# Contact Me!
-Hi, I am [Dean Ayalon](https://deanayalon.com), a software developer from Israel.<br>
-If you're interested in my skills, please take a look at [my profile](https://github.com/DeanAyalon) for my technology stack and other projects :)
-
-Feel free to contact me for any reason, including:
-- Instructions, explanations and help
-- Code recommendations and feature requests
-- Collaborations - **Invite me to your projects**, I'm constantly looking for something new to work on :)
-- Hiring - As of the current commit, I am [looking for a job](https://deanayalon.com/resume)!
-
-[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DeanAyalon)
-[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://deanayalon.com/linkedin)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://deanayalon.com/whatsapp)
-[![Email](https://img.shields.io/badge/Email-3693F3?style=for-the-badge&logo=icloud&logoColor=white)](mailto:dev@deanayalon.com) 
-[![Call Me](https://custom-icon-badges.demolab.com/badge/Call_Me-blue.svg?logo=phone&logoColor=white&style=for-the-badge)](https://deanayalon.com)
-
-
 ## Thanks
-- [evab](https://github.com/eranbraun) - For continuous guidance and support, through all my nagging
+- [evab](https://github.com/eranbraun) - For continuous guidance and support, through my constant nagging
 
 ## Featured Technologies
 [![Verdaccio](https://img.shields.io/badge/Verdaccio-4B5E40.svg?style=for-the-badge&logo=verdaccio&logoColor=white)](https://npmjs.com)
@@ -86,5 +67,3 @@ Feel free to contact me for any reason, including:
 [![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://npmjs.com)
 ![Shell](https://img.shields.io/badge/shell-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 [![GitHub Actions](https://img.shields.io/badge/github-actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/DeanAyalon/verdaccio/actions)
-
-
