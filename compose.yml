@@ -16,7 +16,8 @@ services:
       - HOST_PORT=${HOST_PORT:-4873}
       - PROXY_PORT=${PROXY_PORT:-${HOST_PORT:-4873}}
       - VIRTUAL_HOST=${DOMAIN:?} 
-      
+      - CERT_NAME=${CERT_NAME:-${DOMAIN:?}}
+
   verdaccio-dev:
     extends: 
       file: compose.dev.yml
