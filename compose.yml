@@ -7,6 +7,7 @@ services:
       - live
     image: ghcr.io/deanayalon/verdaccio:stable
     container_name: verdaccio
+    hostname: verdaccio
     volumes:
       - ./mounts/live/conf:/verdaccio/conf:ro
       - ${STORAGE:-./mounts/live/storage}:/verdaccio/storage
@@ -24,6 +25,7 @@ services:
       service: verdaccio-dev
     image: ghcr.io/deanayalon/verdaccio:dev
     container_name: verdaccio-dev
+    hostname: verdaccio-dev
     profiles:
       - dev
 
@@ -34,6 +36,7 @@ services:
       service: verdaccio-dev
     image: ghcr.io/deanayalon/verdaccio:beta
     container_name: verdaccio-beta
+    hostname: verdaccio-beta
     profiles:
       - beta
     build:
