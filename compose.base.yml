@@ -6,5 +6,30 @@ services:
       context: .
       dockerfile: dockerfile
     environment:
-      - LATEST_ENV=1.2.3
-      - ENV_VERSION=${ENV_VERSION:?Environment file not up to date}
+      LATEST_ENV: 1.2.3
+      ENV_VERSION: ${ENV_VERSION:?Environment file not up to date}
+    healthcheck:
+      test: ["CMD", "/verdaccio/scripts/healthcheck.sh"]
+      interval: 1m30s
+      timeout: 5s
+
+  verdaccio-dev:
+    extends: verdaccio
+    develop:
+      watch:
+        - action: rebuild
+          path: ./files
+          target: /verdaccio
+    # ports:
+    #   - ${HOST_PORT:-4873}:4873
+    volumes:
+      - ${CONF_DEV:-./mounts/live/conf}:/verdaccio/conf:ro
+      - ${STORAGE_DEV:-${STORAGE:-./mounts/dev/storage}}:/verdaccio/storage
+      - ${LOGS_DEV:-./mounts/dev/logs}:/verdaccio/logs
+      # - ${CERTS_DEV:-${CERTS:-./mounts/dev/certs}}:/verdaccio/certs:ro
+    environment:
+      DOMAIN: ${DOMAIN_DEV:-${DOMAIN:?}}
+      HOST_PORT: ${HOST_PORT_DEV:-${HOST_PORT:-4873}}
+      PROXY_PORT: ${PROXY_PORT:-${PORT_DEV:-${HOST_PORT:-4873}}}
+      VIRTUAL_HOST: ${DOMAIN_DEV:-${DOMAIN:?}}
+      CERT_NAME: ${CERT_NAME:-${DOMAIN_DEV:-${DOMAIN:?}}}

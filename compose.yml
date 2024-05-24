@@ -13,15 +13,15 @@ services:
       - ${STORAGE:-./mounts/live/storage}:/verdaccio/storage
       - ${LOGS:-./mounts/live/logs}:/verdaccio/logs
     environment:
-      - DOMAIN=${DOMAIN:?}
-      - HOST_PORT=${HOST_PORT:-4873}
-      - PROXY_PORT=${PROXY_PORT:-${HOST_PORT:-4873}}
-      - VIRTUAL_HOST=${DOMAIN:?} 
-      - CERT_NAME=${CERT_NAME:-${DOMAIN:?}}
+      DOMAIN: ${DOMAIN:?}
+      HOST_PORT: ${HOST_PORT:-4873}
+      PROXY_PORT: ${PROXY_PORT:-${HOST_PORT:-4873}}
+      VIRTUAL_HOST: ${DOMAIN:?} 
+      CERT_NAME: ${CERT_NAME:-${DOMAIN:?}}
 
   verdaccio-dev:
     extends: 
-      file: compose.dev.yml
+      file: compose.base.yml
       service: verdaccio-dev
     image: ghcr.io/deanayalon/verdaccio:dev
     container_name: verdaccio-dev
@@ -32,7 +32,7 @@ services:
   # Uses the beta version of Verdaccio - No errors were observed
   verdaccio-beta:
     extends: 
-      file: compose.dev.yml
+      file: compose.base.yml
       service: verdaccio-dev
     image: ghcr.io/deanayalon/verdaccio:beta
     container_name: verdaccio-beta
