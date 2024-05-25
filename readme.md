@@ -61,7 +61,7 @@ Unsure, but opening port 4873 and setting the `VERDACCIO_PROTOCOL` environment v
 - [evab](https://github.com/eranbraun) - For continuous guidance and support, through my constant nagging
 
 ## Featured Technologies
-[![Verdaccio](https://img.shields.io/badge/Verdaccio-4B5E40.svg?style=for-the-badge&logo=verdaccio&logoColor=white)](https://npmjs.com)
+[![Verdaccio](https://img.shields.io/badge/Verdaccio-4B5E40.svg?style=for-the-badge&logo=verdaccio&logoColor=white)](https://github.com/verdaccio/verdaccio)
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/DeanAyalon/verdaccio/pkgs/container/verdaccio)
 
 [![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://npmjs.com)
