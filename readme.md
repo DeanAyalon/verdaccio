@@ -1,3 +1,8 @@
+# Archive
+This repository is now archived! It is no longer maintained or updated, but it is working as of July 1st, 2024.<br>
+Although the repository is not active, you may still contact me about questions, modifications, etc.<br>
+The reason for deprecating this repository is migration to [onedev](https://onedev.io)
+
 # What is this?
 This is the repository managing my own [Verdaccio](https://github.com/verdaccio/verdaccio) server
 
